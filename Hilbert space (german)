@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+
+\title{\huge $\textsc{Der Hilbertraum}$}
+\author{\large $\textsl{Lyxnn}$}
+\date{\large $\textsl{31.10.2021}$}
+
+\begin{document}
+
+\maketitle
+
+$\newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline$
+
+\section{Hilbertraum}
+
+Es sei $\mathbb{K} \in \{\mathbb{R}, \mathbb{C}\}$.
+
+
+\subsection{Defnition und einführende Beispiele}
+$\textbf{Definition 1.1}$  (inneres Produkt, Skalarprodukt) $\newline \newline$
+Ein $\underline{inneres}$ $\underline{Produkt}$ auf einem $\mathbb{K}$-Vektorraum V ist eine positiv definite hermitesche Sesquilinearform $\langle\cdot, \cdot\rangle: V \times V \rightarrow \mathbb{K}$, das heißt: $\forall x, y, z \in V$ und $\forall\alpha \in \mathbb{K}$ gilt: $\newline$
+
+\begin{itemize}
+    \item[1)] Positiv Definit: $\langle x, x\rangle \geq 0$ und $\langle x, x\rangle = 0 \Leftrightarrow x=0$.
+    \item[2)] Hermitesch: $\langle x, y\rangle = \overline{\langle y, x\rangle}.$
+    \item[3)] Sesquilinear: $\langle x+\alpha y,  z\rangle = \langle x, z \rangle + \overline{\alpha}\langle y, z\rangle$ und $\langle x,y+\alpha z\rangle = \langle x, y\rangle + \alpha \langle x, z\rangle$.
+\end{itemize}
+
+$\newline \newline$
+$\textbf{Bemerkung 1.2}$
+$\newline \newline$
+Das Skalarprodukt kann auch linear im ersten und semilinear im zweiten Argument definiert werden. Im Hinblick auf die Bra-Ket-Notation wird es im Folgenden wie oben definiert verwendet, da damit das Skalarprodukt als $\braket{x|y}$ geschrieben werden kann, wobei $\bra{x}$ Bra und $\ket{y}$ Ket genannt wird. $\newline$
+Die Abbildung $\bra{x}: V\rightarrow \mathbb{K},$ $y\mapsto \braket{x|y}$ kann als Linearform (lineare Abbildung vom Vektorraum $V$ in den zugrundeliegenden Körper $\mathbb{K}$) auf $V$ aufgefasst werden.
+$\newline \newline$
+$\textbf{Definition 1.3}$ (Prähilbertraum, Innenproduktraum) $\newline \newline$
+Sei $V$ ein $\mathbb{K}$-Vektorraum und sei $\langle\cdot, \cdot\rangle: V \times V \rightarrow \mathbb{K}$ ein inneres Produkt, so ist $(V,\langle\cdot, \cdot\rangle)$ ein $\underline{Prähilbertraum}$.
+$\newline \newline$
+$\textbf{Definition 1.4}$ (Hilbertraum)
+$\newline \newline$
+Ein $\underline{Hilbertraum}$ ist ein bezüglich der vom inneren Produkt induzierten Norm $||\cdot|| = \sqrt{\langle\cdot, \cdot\rangle}$ vollständiger Prähilbertraum.
+$\newline \newline$
+$\textbf{Beispiel 1.5}$
+$\newline \newline$
+
+\begin{itemize}
+    \item[1.]  komplexer n-dimensionaler Koordinatenraum mit Standardskalarprodukt: $(\mathbb{C}^{n},\braket{x,y} = \sum_ {k=1} ^{n} \overline{x}_{k}y_{k})$.
+    \item[2.] Folgenraum $\ell^{2}(\mathbb{N})=\left\{\left(x_{n}\right){n} \subset \mathbb{C} ; \sum_{k=1}^{\infty}\left|x_{k}\right|^{2}<\infty\right\}^{2}$ mit $\newline$ $\braket{x,y} = \sum_ {k=1} ^{n} \overline{x}_{k}y_{k}$.
+    \item[3.] Lebesgue-Raum $L_2$. $\newline$
+    Sei $(S,\mathcal{A},\mu)$ ein Maßraum, $\mathcal{L}_{2}(S,\mathcal{A},\mu):=\left\{f: S \rightarrow \mathbb{K}, \int_{S}|f|^{2} \mathrm{~d} \mu<\infty\right\}$, und $\mathcal{N}=\left\{f \in \mathcal{L}_{2} \mid f=0 \mu-\right.$ fast überall $\}$, so ist $L_{2}$ der Quotientenraum $\mathcal{L}_{2}/\mathcal{N}$. $\newline$
+    Mit $\newline$
+    \begin{center}
+        $\begin{aligned}\huge \braket{f,g}_{L_{2}}= \int_ {S} \braket{f(x),g(x)}d\mu (x)\end{aligned}$
+    \end{center}
+    $\newline$ ist ein inneres Produkt definiert, wobei das Skalarprodukt im Integral, das Standardskalarprodukt bezeichne; $\newline$ die Vollständigkeit liefert der aus der Maßtheorie Satz von Riesz-Fischer.
+\end{itemize}
+
+\subsection{Orthonormalbasen}
+$\textbf{Definition 1.6}$ (Orthonormalsystem)
+$\newline \newline$
+Eine Teilmenge $\mathcal{E}$ eines Hilbertraums $\mathcal{H}$ heißt $\underline{Orthonormalsystem}$, falls $||e|| = 1$ $\forall e \in \mathcal{E}$ und $\braket{e,f} = 0$ $\forall e, f \in \mathcal{E}$ mit $e\neq f$.
+$\newline \newline$
+$\textbf{Definition 1.7}$ (Orthonormalbasis)
+$\newline \newline$
+Ein Orthonormalsystem $\mathcal{E}$ heißt $\underline{Orthonormalbasis}$ (oder vollständiges Orthonormalsystem) von $\mathcal{H}$, falls $span(\mathcal{E})$ ($span(\mathcal{E}):=\left\{\sum_{i=1}^{n} \lambda_{i} a_{i} \mid \lambda_{i} \in \mathbb{K}, e_{i} \in \mathcal{E}, n \in \mathbb{N}\right\}$) dicht in $\mathcal{H}$ liegt (also $\overline{span(\mathcal{E})} = \mathcal{H}$).
+$\newline \newline$
+$\textbf{Bemerkung 1.8}$
+$\newline \newline$
+Damit lässt sich jedes $x \in \mathcal{H}$ als Grenzwert einer Folge in $span(\mathcal{E})$ Schreiben.
+$\newline \newline$
+$\textbf{Definition 1.9}$ (orthogonales Komplement)
+$\newline \newline$
+Sei $V$ eine Teilmenge eines Hilbertraums $\mathcal{H}$.$\newline$ $V^{\perp}:=\{w \in \mathcal{H} \mid \forall v \in V:\langle v, w\rangle=0\}$ heißt
+das orthogonale Komplement von $V$. 
+$\newline \newline$
+$\textbf{Satz 1.10}$ (Charakterisierung einer Orthonormalbasis)
+$\newline \newline$
+Sei $\mathcal{E}=\left\{e_{k} \mid k \in \mathbb{N}\right\}$ ein abzählbares Orthonormalsystem in einem Hilbertraum $\mathcal{H}$. $\newline$ Dann sind die folgenden vier Aussagen äquivalent:
+
+\begin{itemize}
+    \item[1.] $\mathcal{E}^{\perp} = \{0\}$.
+    \item[2.] $\mathcal{E}$ ist Orthonormalbasis.
+    \item[3.] Es gilt $\forall x\in \mathcal{H}:$ 
+    \begin{center}
+        $\begin{aligned}x=\sum_ {k=1} ^{\infty} \braket{e_{k},x}e_{k}\end{aligned}.$
+    \end{center}
+    \item[4.] Es gilt $\forall x, y \in \mathcal{H}$
+    $\newline$
+    \begin{center}
+        $\begin{aligned}\braket{x,y}= \sum_ {k=1} ^{\infty}\braket{x,e_{k}}\braket{e_{k},y}\end{aligned}.$
+    \end{center}
+    \end{itemize}
+    $\newline$
+    
+$\textbf{Beweis.}$ $"(1) \Rightarrow(2)": U:=\overline{span(\mathcal{E})}.$ $\mathcal{E} \subset U$ liefert $U^{\perp} \subset \mathcal{E}^{\perp}$, also $U^{\perp}=\{0\}$. $\newline$
+Sei nun $x \in \mathcal{H}$. Definiere $s_{n}=\begin{aligned}
+\sum_{k=1}^{n} \left\langle e_{k}, x\right\rangle e_{k}\end{aligned}$. Dann ist $\left(s_{n}\right)_{n}$ eine Cauchyfolge, da gilt:
+
+\begin{center}
+$
+\begin{aligned}
+\left\|s_{n}-s_{m}\right\|^{2} &=\left\|\sum_{k=m+1}^{n}\left\langle e_{k}, x\right\rangle e_{k}\right\|^{2}=\left\langle\sum_{j=m+1}^{n}\left\langle e_{j}, x\right\rangle e_{j}, \sum_{k=m+1}^{n}\left\langle e_{k}, x\right\rangle e_{k}\right\rangle=\\
+&=\sum_{k=m+1}^{n}\left\langle e_{k}, x\right\rangle\left\langle\sum_{j=m+1}^{n}\left\langle e_{j}, x\right\rangle e_{j}, e_{k}\right\rangle=\sum_{k=m+1}^{n}\left\langle e_{k}, x\right\rangle \sum_{j=m+1}^{n} \overline{\left\langle e_{j}, x\right\rangle} \delta_{j k}=\\
+&=\sum_{k=m+1}^{n}\left|\left\langle e_{k}, x\right\rangle\right|^{2} \leq \sum_{k=m+1}^{\infty}\left|\left\langle e_{k}, x\right\rangle\right|^{2} \rightarrow 0 \text { für } m \rightarrow \infty.
+\end{aligned}
+$
+\end{center}
+Damit existiert $\begin{aligned}
+s=\lim_{n \rightarrow \infty} s_{n} \in U\end{aligned}$. Nun folgt aber mit der Stetigkeit des Skalarprodukts
+
+\begin{center}
+    $\begin{aligned}\forall k:\left\langle s-x, e_{k}\right\rangle=\lim_{n \rightarrow \infty}\left\langle s_{n}-x, e_{k}\right\rangle=0.\end{aligned}$
+\end{center}
+$\newline$
+
+
+Insbesondere ist $s-x \in U^{\perp}$, also $s=x$ und damit $x \in U$. Nun folgt $U=\mathcal{H}$. $"(2) \Rightarrow(3)":$ Die Partialsumme $s_{n}=\sum_{k=1}^{n}\left\langle e_{k}, x\right\rangle e_{k}$ fiir $x \in \mathcal{H}, n \in \mathbb{N} .$ $\forall 1 \leq j \leq n:\left\langle e_{j}, s_{n}-x\right\rangle=\left\langle e_{j}, s_{n}\right\rangle-\left\langle e_{j}, x\right\rangle=\sum_{k=1}^{n}\left\langle e_{k}, x\right\rangle\left\langle e_{j}, e_{k}\right\rangle-\left\langle e_{j}, x\right\rangle=0$
+Damit folgt: $\forall y \in span\left(e_{1}, \ldots, e_{n}\right): y \perp s_{n}-x$, also mit dem Satz des Pythagoras (anwendbar, da $x-s_{n} \perp s_{n} -y$ und letzteres aus $span(e_{1},\cdots,e_{n}))$ : $\newline$ $\left.\|x-y\|^{2}=\left\|x-s_{n}\right\|^{2}+\left\|s_{n}-y\right\|^{2} \geq\left\|x-s_{n}\right\|^{2}.$ $\newline$
+Abschließend ist eine Folge $(x_{n})_{n} \rightarrow x$ und eine monoton steigende Folge $(m_{n})_{n} \subset \mathbb{N}$, so gewählt, dass $x_{n} \in span(e_{1}, \ldots, e_{m_{n}})$. $\newline$ Dann ist 0 \leq\|x-s_{m_{n}}\|^{2} \leq\|x-x_{n}\|^{2} \rightarrow 0.$ Wegen $\|x-s_{n+1}\|^{2} \leq\|x-s_{n}\|^{2}$ konvergiert $(s_{n})_{n}$ gegen $x$, was die Behauptung liefert. $\newline$ $"(3)\Rightarrow(4) ":$ wieder $s_{n}=\sum_{k=1}^{n}\langle e_{k}, x\rangle e_{k}$ und $t_{n}=\sum_{k=1}^{n}\langle e_{k}, y\rangle e_{k}$. Dann folgt: $\langle s_{n}, t_{n}\rangle=\sum_{k=1}^{n}\langle x, e_{k}\rangle\langle e_{k}, y\rangle$. Wegen $s_{n} \rightarrow x$ und $t_{n} \rightarrow y$ folgt mit der Stetigkeit des Skalarprodukts die Behauptung. $\newline$
+$"(4) \Rightarrow (1)":$ Nun $y=x$. Es folgt: $\|x\|^{2}=\sum_{k=1}^{\infty}|\langle x, e_{k}\rangle|^{2}$. Sei $x \in \mathcal{E}^{\perp}$. Dann gilt $\forall k \in \mathbb{N}:$ $\langle x, e_{k}\rangle=0$ und damit folgt $\|x\|^{2}=0$ also $x=0.$
+
+$\newline \newline$
+$\textbf{Definition 1.11}$
+$\newline \newline$
+Existiert für einen Hilbertraum $\mathcal{H}$ eine abzählbare Orthonormalbasis $\mathcal{E}$, dann nennt man den Hilbertraum
+$\mathcal{H}$ separabel.
+
+
+
+
+\end{document}
