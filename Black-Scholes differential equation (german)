@@ -1,0 +1,115 @@
+\documentclass{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{iitem}
+\usepackage[T1]{fontenc} 
+\usepackage[ngerman]{babel}
+\usepackage{hyphenat}
+\hyphenation{Mathe-matik wieder-gewinnen}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[Glenn]{fncychap}
+
+\title{\huge$\textbf{Black-Scholes-Differentialgleichung}$}
+\author{\large $\textsl{Lyxnn}$}
+\date{\large $\textsl{27.11.2021}$}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Black-Scholes-Differentialgleichung}
+
+\section{Herleitung der Black-Scholes Differentialgleichung}
+
+Bewertungsformel für europäische Optionen:
+\begin{itemize}
+    \item Der risikolose Zinssatz $r$ ist bekannt und bleibt auch in Zukunft konstant.
+    \item Dividendenzahlungen der Aktie sind ausgeschlossen.
+    \item Die Option sei europäisch. 
+    \item Beim als ständig angenommenen Handel mit Wertpapieren fallen keine Transaktionskosten bzw. Steuern an.
+    \item Leerverkäufe seien nicht eingeschränkt. Die daraus resultierende Mittel dürfen für den zukünftigen Handel von Wertpapieren verwendet werden.
+    \item Alle verfügbaren Wertpapiere seien beliebig teilbar.
+    \item Der Aktienkurs $S$ entspricht einem stochastischen Prozess in stetiger Zeit, dessen Varianzrate proportional zu $S^2$ sei. $S$ sei auf jedem Intervall log-normalverteilt, wobei die Varianz des Ertrages als konstant angenommen wird.
+\end{itemize}
+
+Aus dem letzten Punkt ergibt sich unmittelbar die folgende Differentialgleichung für den Aktienkurs $S$: $\newline$
+\begin{equation}
+    \begin{aligned} dS(t) = \mu S(t)dt+\sigma S(t) dW(t)   \end{aligned},
+\end{equation} 
+$\newline$
+wobei die Konstante $\mu$ für die jährlich erwartete prozentuelle Rendite der Aktie steht und die Volatilität $\sigma$ für deren Standardabweichung. $\newline$ Es ist klar, dass einem Ito-Prozess in der differenzialschreibweise entspricht. $\newline$ Es muss insofern auf der linken Seite vor den Differentialen jeweils $S(T)$ multiplikativ berücksichtigt werden, als $\mu$ nur einem relativen Anteil entspricht. $\newline \newline$ Bei höheren Aktienkursen ist klarerweise auch eine höhere absolute Änderung des Aktienkurses bei konstantem $\mu$ zu erwarten.
+$\newline \newline$
+Die Lösung der stochastischen Differentialgleichung ist eine geometrische Brownsche Bewegung:
+$\newline$
+\begin{equation}
+    S(t)=S(0)\exp^{(\mu -\frac{1}{2} \sigma^2)t+\sigma W(t)}
+\end{equation}
+$\newline$
+Da der Preis der europäischen Option durch eine Funktion des Aktienkurses und der Zeit modelliert werden soll, können wir das Lemma von Ito auf $f(S(t),t)$ anwenden, wobei S(t) der Ito-Prozess ist. $\newline$
+Wir erhalten, wobei der Übersichtlichkeit halber hier und im Folgenden auf das Anschreiben der Argumente von $S$ und $f$ verzichtet wird: 
+
+$\newline$
+\begin{equation}
+    \begin{aligned} df=\left(\frac{\partial f}{\partial S} \mu S+\frac{\partial f}{\partial t}+\frac{1}{2}\frac{\partial^2 f}{\partial S^2} \sigma^2 S^2\right)dt+\frac{\partial f}{\partial S}\sigma SdW(t) 
+    \end{aligned}.
+\end{equation}
+$\newline$
+
+Das Ziel ist jetzt, den risikobehafteten Teil in der oberen Gleichung zu eliminieren. Dazu bilden wir ein Hedging-Portfolio, wobei das Derivat als Short-Position gehalten werden soll. In jedem Portfolio soll also eine Option der Quantität -1 und
+
+\begin{equation}
+    \begin{aligned}\frac{\partial f}{\partial S}   \end{aligned}
+\end{equation}
+Anteile der Aktie, also long, gehalten werden.
+ $\newline$
+Es handelt sich hierbei um Delta-Hedging. Für den Wert des Portfolios $P$ gilt dann
+$\newline$
+\begin{equation}
+    \begin{aligned}P=-f+\frac{\partial f}{\partial S}S  \end{aligned}.
+\end{equation}
+$\newline$
+Für die Änderung des Portfoliowertes in einem infinitesimalen Zeitraum folgt also damit:
+$\newline$
+\begin{equation}
+    \begin{aligned}dP=-df+\frac{\partial f}{\partial S}dS \end{aligned}.
+\end{equation}
+$\newline$
+Analoge Überlegungen könnten auch für kleine Zeitintervalle $\Delta t$ angestellt werden. $\newline$ In die letzte Gleichung können wir nun (0.1) und (0.3) einsetzen und nach anschließendem Vereinfachen erhaltet man: 
+
+$\newline$
+\begin{equation}
+    \begin{aligned}dP=- \left(\frac{\partial f}{\partial t} + \frac{1}{2}\frac{\partial^2 f}{\partial S^2}\sigma^2 S^2\right) dt.  \end{aligned}
+\end{equation}
+$\newline$
+Hier wurden sogar die Parameter $\mu$ eliminiert worden, weshalb man daraus schließen kann, dass die Änderung des Portfoliowertes in einem infinitesimalen Zeitraum unabhängig von der erwarteten Aktienrendite ist. $\newline$ Da auch das Differential $dW(t)$ eliminiert wurde, kann man daraus folgern, dass das Portfolio $P$ für den infinitesimalen Zeitraum risikolos sein muss. Folglich muss für $dP$ auch gelten:
+$\newline$
+\begin{equation}
+    \begin{aligned}dP=rPdt, \end{aligned}
+\end{equation}
+$\newline$
+wobei $r$ dem risikolosen Zinssatz entspricht. $P$ muss hier also auch dieselbe Rendite wie jedes andere risikolose Wertpapier liefern. $\newline$
+Ansonsten würde dies der Annahme der Arbitragefreiheit widersprechen, da abhängig von der Höhe der Rendite des Portfolios im Vergleich zu $r$ ein Kaufen bzw. Shorten des Portfolios eine Möglichkeit für risikolosen Gewinn bieten würde. $\newline$
+Verwendet man dies gemeinsam mit (0.7), so ergibt sich nach dem Einsetzen von $P$ sowie elementaren Umformungen mit anschließendem Weglassen des Differentials $dt$, das multiplikativ für alle Terme beider Seiten gilt, die Black-Scholes-Merton Differentialgleichung:
+$\newline$
+\begin{equation}
+    \begin{aligned} rS\frac{\partial f}{\partial S}+\frac{\partial f}{\partial t}+\frac{1}{2}\sigma^2 S^2 \frac{\partial^2 f}{\partial S^2}=rf\end{aligned}.
+\end{equation}
+
+
+
+
+
+
+\end{document}
