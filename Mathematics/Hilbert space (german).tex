@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -7,6 +7,33 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{iitem}
+\usepackage[T1]{fontenc} 
+\usepackage[ngerman]{babel}
+\usepackage{hyphenat}
+\hyphenation{Mathe-matik wieder-gewinnen}
+\usepackage{tcolorbox}
+\usepackage[Glenn]{fncychap}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+\usepackage[top=1in,bottom=1in,left=1.5in,right=1.5in]{geometry}
+\usepackage{graphicx, soul, tikz}
+
 
 \title{\huge $\textsc{Der Hilbertraum}$}
 \author{\large $\textsl{Lyxnn}$}
@@ -16,14 +43,13 @@
 
 \maketitle
 
-$\newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline \newline$
 
-\section{Hilbertraum}
+\chapter{Hilbertraum}
 
 Es sei $\mathbb{K} \in \{\mathbb{R}, \mathbb{C}\}$.
 
 
-\subsection{Defnition und einführende Beispiele}
+\section{Defnition und einführende Beispiele}
 $\textbf{Definition 1.1}$  (inneres Produkt, Skalarprodukt) $\newline \newline$
 Ein $\underline{inneres}$ $\underline{Produkt}$ auf einem $\mathbb{K}$-Vektorraum V ist eine positiv definite hermitesche Sesquilinearform $\langle\cdot, \cdot\rangle: V \times V \rightarrow \mathbb{K}$, das heißt: $\forall x, y, z \in V$ und $\forall\alpha \in \mathbb{K}$ gilt: $\newline$
 
@@ -61,7 +87,7 @@ $\newline \newline$
     $\newline$ ist ein inneres Produkt definiert, wobei das Skalarprodukt im Integral, das Standardskalarprodukt bezeichne; $\newline$ die Vollständigkeit liefert der aus der Maßtheorie Satz von Riesz-Fischer.
 \end{itemize}
 
-\subsection{Orthonormalbasen}
+\section{Orthonormalbasen}
 $\textbf{Definition 1.6}$ (Orthonormalsystem)
 $\newline \newline$
 Eine Teilmenge $\mathcal{E}$ eines Hilbertraums $\mathcal{H}$ heißt $\underline{Orthonormalsystem}$, falls $||e|| = 1$ $\forall e \in \mathcal{E}$ und $\braket{e,f} = 0$ $\forall e, f \in \mathcal{E}$ mit $e\neq f$.
@@ -130,6 +156,8 @@ $\textbf{Definition 1.11}$
 $\newline \newline$
 Existiert für einen Hilbertraum $\mathcal{H}$ eine abzählbare Orthonormalbasis $\mathcal{E}$, dann nennt man den Hilbertraum
 $\mathcal{H}$ separabel.
+
+
 
 
 
